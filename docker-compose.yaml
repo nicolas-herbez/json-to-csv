@@ -1,0 +1,63 @@
+version: '3'
+
+services:
+    api:
+        container_name: api
+        build:
+            context: ./docker/api/
+            dockerfile: ./Dockerfile
+        restart: always
+        ports:
+            - 8000:8000
+        volumes:
+            - ./api/:/var/www/
+        networks:
+            - json-to-csv
+
+    database:
+        container_name: database
+        build:
+            context: ./docker/database/
+            dockerfile: ./Dockerfile
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: json_to_csv
+        ports:
+            - 3306
+        volumes:
+            - db-data:/var/lib/mysql
+        networks:
+            - json-to-csv
+
+    phpmyadmin:
+        container_name: phpmyadmin
+        build:
+            context: ./docker/phpmyadmin/
+            dockerfile: ./Dockerfile
+        restart: always
+        ports:
+            - 8001:80
+        environment:
+            - PMA_HOST=database
+        networks:
+            - json-to-csv
+
+    rtf:
+        container_name: response-to-file
+        build:
+            context: ./docker/rtf/
+            dockerfile: ./Dockerfile
+        restart: always
+        ports:
+            - 8002:3000
+        volumes:
+            - ./postman/rtf/:/var/www/
+        networks:
+            - json-to-csv
+
+volumes:
+    db-data:
+
+networks:
+    json-to-csv:

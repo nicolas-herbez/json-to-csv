@@ -1,0 +1,7 @@
+{
+    "scripts": {
+        "docker-start": "cls && docker-compose up -d --build && docker logs --tail 1000 --follow api --details",
+        "docker-stop": "cls && docker-compose down",
+        "api-terminal": "cls && docker exec -it api sh -c ./script.sh"
+    }
+}

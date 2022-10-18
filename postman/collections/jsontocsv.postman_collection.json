@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "a50783fe-2f50-4946-a1e0-2987a3594a4a",
+		"name": "json to csv",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23767924"
+	},
+	"item": [
+		{
+			"name": "teams",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code == 200) {\r",
+							"    // The opts for the server, also includes the data to be written to file\r",
+							"    let opts = {\r",
+							"        requestName: request.name || request.url,\r",
+							"        fileExtension: 'csv',\r",
+							"        mode: 'writeFile', // Change this to any function of the fs library of node to use it.\r",
+							"        uniqueIdentifier: false,\r",
+							"        responseData: pm.response.text()\r",
+							"    };\r",
+							"\r",
+							"    pm.sendRequest({\r",
+							"        url: 'http://localhost:8002/write',\r",
+							"        method: 'POST',\r",
+							"        header: 'Content-Type:application/json',\r",
+							"        body: {\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify(opts)\r",
+							"        }\r",
+							"    }, function (err, res) {\r",
+							"        console.log(res);\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"teams\" : [\r\n        {\r\n            \"squadName\": \"Super hero squad\",\r\n            \"homeTown\": \"Metro City\",\r\n            \"formed\": 2016,\r\n            \"secretBase\": \"Super tower\",\r\n            \"active\": true,\r\n            \"members\": [\r\n                {\r\n                    \"name\": \"Molecule Man\",\r\n                    \"age\": 29,\r\n                    \"secretIdentity\": \"Dan Jukes\",\r\n                    \"powers\": [\r\n                        \"Radiation resistance\",\r\n                        \"Turning tiny\",\r\n                        \"Radiation blast\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Madame Uppercut\",\r\n                    \"age\": 39,\r\n                    \"secretIdentity\": \"Jane Wilson\",\r\n                    \"powers\": [\r\n                        \"Million tonne punch\",\r\n                        \"Damage resistance\",\r\n                        \"Superhuman reflexes\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Eternal Flame\",\r\n                    \"age\": 1000000,\r\n                    \"secretIdentity\": \"Unknown\",\r\n                    \"powers\": [\r\n                        \"Immortality\",\r\n                        \"Heat Immunity\",\r\n                        \"Inferno\",\r\n                        \"Teleportation\",\r\n                        \"Interdimensional travel\"\r\n                    ]\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"squadName\": \"Super Vilain squad\",\r\n            \"homeTown\": \"Meudon City\",\r\n            \"formed\": 2019,\r\n            \"secretBase\": \"Under Town\",\r\n            \"active\": true,\r\n            \"members\": [\r\n                {\r\n                    \"name\": \"Osef Man\",\r\n                    \"age\": 29,\r\n                    \"secretIdentity\": \"Danny Jul\",\r\n                    \"powers\": [\r\n                        \"Cheese Control\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Titegoute Special\",\r\n                    \"age\": 39,\r\n                    \"secretIdentity\": \"Justine Titegoute\",\r\n                    \"powers\": [\r\n                        \"Drink really fast\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Eternal Lazy\",\r\n                    \"age\": 1000000,\r\n                    \"secretIdentity\": \"Unknown\",\r\n                    \"powers\": false\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"squadName\": \"Useless Team\",\r\n            \"homeTown\": \"Bar\",\r\n            \"formed\": 2021,\r\n            \"secretBase\": \"Le Debonnaire\",\r\n            \"active\": true,\r\n            \"members\": [\r\n                {\r\n                    \"name\": \"Slowy\",\r\n                    \"age\": 29,\r\n                    \"secretIdentity\": \"Speedy No Gonzales\",\r\n                    \"powers\": [\r\n                        \"Hyper slowing writer\",\r\n                        \"Always late\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Jumpy\",\r\n                    \"age\": 39,\r\n                    \"secretIdentity\": \"Bugs D.Bunny \",\r\n                    \"powers\": [\r\n                        \"Jump 2 feets up\",\r\n                        \"Never stop jumping\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Cuty Baby\",\r\n                    \"age\": 1,\r\n                    \"secretIdentity\": \"Unknown\",\r\n                    \"powers\": [\r\n                        \"Cry a lot\"\r\n                    ]\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"squadName\": \"The Oldest\",\r\n            \"homeTown\": \"Dust\",\r\n            \"formed\": 184,\r\n            \"secretBase\": \"Under Dust\",\r\n            \"active\": false,\r\n            \"members\": [\r\n                {\r\n                    \"name\": \"Daddy Cool\",\r\n                    \"age\": 93822,\r\n                    \"secretIdentity\": \"Bobby Farrell\",\r\n                    \"powers\": [\r\n                        \"Sing to charm\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Missy Elliot\",\r\n                    \"age\": 45342,\r\n                    \"secretIdentity\": \"Melissa Arnette\",\r\n                    \"powers\": [\r\n                        \"Infernal groove\",\r\n                        \"Burn all dancfloors\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Liz Mitchell\",\r\n                    \"age\": 3245342,\r\n                    \"secretIdentity\": \"Unknown\",\r\n                    \"powers\": [\r\n                        \"Mortality\",\r\n                        \"Invisibility\"\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/teams",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "team_members",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code == 200) {\r",
+							"    // The opts for the server, also includes the data to be written to file\r",
+							"    let opts = {\r",
+							"        requestName: request.name || request.url,\r",
+							"        fileExtension: 'csv',\r",
+							"        mode: 'writeFile', // Change this to any function of the fs library of node to use it.\r",
+							"        uniqueIdentifier: false,\r",
+							"        responseData: pm.response.text()\r",
+							"    };\r",
+							"\r",
+							"    pm.sendRequest({\r",
+							"        url: 'http://localhost:8002/write',\r",
+							"        method: 'POST',\r",
+							"        header: 'Content-Type:application/json',\r",
+							"        body: {\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify(opts)\r",
+							"        }\r",
+							"    }, function (err, res) {\r",
+							"        console.log(res);\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"teams\" : [\r\n        {\r\n            \"squadName\": \"Super hero squad\",\r\n            \"homeTown\": \"Metro City\",\r\n            \"formed\": 2016,\r\n            \"secretBase\": \"Super tower\",\r\n            \"active\": true,\r\n            \"members\": [\r\n                {\r\n                    \"name\": \"Molecule Man\",\r\n                    \"age\": 29,\r\n                    \"secretIdentity\": \"Dan Jukes\",\r\n                    \"powers\": [\r\n                        \"Radiation resistance\",\r\n                        \"Turning tiny\",\r\n                        \"Radiation blast\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Madame Uppercut\",\r\n                    \"age\": 39,\r\n                    \"secretIdentity\": \"Jane Wilson\",\r\n                    \"powers\": [\r\n                        \"Million tonne punch\",\r\n                        \"Damage resistance\",\r\n                        \"Superhuman reflexes\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Eternal Flame\",\r\n                    \"age\": 1000000,\r\n                    \"secretIdentity\": \"Unknown\",\r\n                    \"powers\": [\r\n                        \"Immortality\",\r\n                        \"Heat Immunity\",\r\n                        \"Inferno\",\r\n                        \"Teleportation\",\r\n                        \"Interdimensional travel\"\r\n                    ]\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"squadName\": \"Super Vilain squad\",\r\n            \"homeTown\": \"Meudon City\",\r\n            \"formed\": 2019,\r\n            \"secretBase\": \"Under Town\",\r\n            \"active\": true,\r\n            \"members\": [\r\n                {\r\n                    \"name\": \"Osef Man\",\r\n                    \"age\": 29,\r\n                    \"secretIdentity\": \"Danny Jul\",\r\n                    \"powers\": [\r\n                        \"Cheese Control\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Titegoute Special\",\r\n                    \"age\": 39,\r\n                    \"secretIdentity\": \"Justine Titegoute\",\r\n                    \"powers\": [\r\n                        \"Drink really fast\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Eternal Lazy\",\r\n                    \"age\": 1000000,\r\n                    \"secretIdentity\": \"Unknown\",\r\n                    \"powers\": false\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"squadName\": \"Useless Team\",\r\n            \"homeTown\": \"Bar\",\r\n            \"formed\": 2021,\r\n            \"secretBase\": \"Le Debonnaire\",\r\n            \"active\": true,\r\n            \"members\": [\r\n                {\r\n                    \"name\": \"Slowy\",\r\n                    \"age\": 29,\r\n                    \"secretIdentity\": \"Speedy No Gonzales\",\r\n                    \"powers\": [\r\n                        \"Hyper slowing writer\",\r\n                        \"Always late\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Jumpy\",\r\n                    \"age\": 39,\r\n                    \"secretIdentity\": \"Bugs D.Bunny \",\r\n                    \"powers\": [\r\n                        \"Jump 2 feets up\",\r\n                        \"Never stop jumping\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Cuty Baby\",\r\n                    \"age\": 1,\r\n                    \"secretIdentity\": \"Unknown\",\r\n                    \"powers\": [\r\n                        \"Cry a lot\"\r\n                    ]\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"squadName\": \"The Oldest\",\r\n            \"homeTown\": \"Dust\",\r\n            \"formed\": 184,\r\n            \"secretBase\": \"Under Dust\",\r\n            \"active\": false,\r\n            \"members\": [\r\n                {\r\n                    \"name\": \"Daddy Cool\",\r\n                    \"age\": 93822,\r\n                    \"secretIdentity\": \"Bobby Farrell\",\r\n                    \"powers\": [\r\n                        \"Sing to charm\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Missy Elliot\",\r\n                    \"age\": 45342,\r\n                    \"secretIdentity\": \"Melissa Arnette\",\r\n                    \"powers\": [\r\n                        \"Infernal groove\",\r\n                        \"Burn all dancfloors\"\r\n                    ]\r\n                },\r\n                {\r\n                    \"name\": \"Liz Mitchell\",\r\n                    \"age\": 3245342,\r\n                    \"secretIdentity\": \"Unknown\",\r\n                    \"powers\": [\r\n                        \"Mortality\",\r\n                        \"Invisibility\"\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/team-members",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"team-members"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

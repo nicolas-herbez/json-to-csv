@@ -1,0 +1,4 @@
+
+# used to keep LF endings, even on Windows
+*.sh text eol=lf
+./api/src/* text eol=lf
