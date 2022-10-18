@@ -34,3 +34,4 @@ phpstan:
     script:
         - phpstan analyse ./src
     allow_failure: false
+
