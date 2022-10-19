@@ -14,8 +14,11 @@ class TeamMembersController extends AbstractController
     /**
      * @Route("/api/team-members", name="app_team_members", methods={"POST"})
      */
-    public function createTeamMembersCsv(Request $request, PowerRepository $powerRepository, EncodeToCsv $encodeToCsv): Response
-    {
+    public function createTeamMembersCsv(
+        Request $request,
+        PowerRepository $powerRepository,
+        EncodeToCsv $encodeToCsv
+    ): Response {
         $jsonDecoded = $request->toArray();
         $teamsList = $jsonDecoded['teams'];
         // dd($teamsList);
@@ -35,8 +38,8 @@ class TeamMembersController extends AbstractController
         ];
 
         $teamMembers = [];
-        for ($i=0; $i < count($teamsList); $i++) { 
-            for ($j=0; $j < count($teamsList[$i]['members']); $j++) {
+        for ($i = 0; $i < count($teamsList); $i++) {
+            for ($j = 0; $j < count($teamsList[$i]['members']); $j++) {
                 $member = $teamsList[$i]['members'][$j];
 
                 $memberInfos = [];
@@ -54,8 +57,7 @@ class TeamMembersController extends AbstractController
 
                 // Powers list for a member
                 if (is_countable($member['powers'])) {
-                    for ($k=0; $k < count($member['powers']); $k++) { 
-
+                    for ($k = 0; $k < count($member['powers']); $k++) {
                         // Rename power headers
                         $teamMembersHeaders[7 + $k] = "Power" . (1 + $k);
 

@@ -14,7 +14,10 @@ class ExceptionSubscriber implements EventSubscriberInterface
         // dd($event->getRequest()->getPathInfo());
         // dd($event->getThrowable());
 
-        if ($event->getRequest()->getPathInfo() == "/api/teams" || $event->getRequest()->getPathInfo() == "/api/team-members") {
+        if (
+            $event->getRequest()->getPathInfo() == "/api/teams" ||
+            $event->getRequest()->getPathInfo() == "/api/team-members"
+        ) {
             $event->allowCustomResponseCode();
 
             $response = new JsonResponse(

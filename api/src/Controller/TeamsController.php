@@ -31,7 +31,7 @@ class TeamsController extends AbstractController
         ];
 
         $teams = [];
-        for ($i=0; $i < count($teamsList); $i++) { 
+        for ($i = 0; $i < count($teamsList); $i++) {
             $team = [];
 
             $team[$teamsHeaders[0]] = $teamsList[$i]['squadName'];

@@ -39,17 +39,17 @@ class PowerRepository extends ServiceEntityRepository
         }
     }
 
-       /**
-        * @return Power[] Returns an array of Power name and Power code
-        */
-       public function findAllNameAndCode(): array
-       {
-           return $this->createQueryBuilder('p')
-               ->select('p.name, p.code')
-               ->getQuery()
-               ->getResult()
-           ;
-       }
+    /**
+     * @return Power[] Returns an array of Power name and Power code
+     */
+    public function findAllNameAndCode(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.name, p.code')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    /**
 //     * @return Power[] Returns an array of Power objects

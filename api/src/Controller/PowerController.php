@@ -28,8 +28,11 @@ class PowerController extends AbstractController
     /**
      * @Route("/", name="app_powers_create", methods={"POST"})
      */
-    public function create(Request $request, PowerRepository $powerRepository, ValidatorInterface $validator): JsonResponse
-    {
+    public function create(
+        Request $request,
+        PowerRepository $powerRepository,
+        ValidatorInterface $validator
+    ): JsonResponse {
         $data = $request->toArray();
 
         $power = new Power();
@@ -40,7 +43,7 @@ class PowerController extends AbstractController
         $errors = $validator->validate($power);
         if (count($errors) > 0) {
             $errorsArray = [];
-            foreach($errors as $error) {
+            foreach ($errors as $error) {
                 $errorsArray[$error->getPropertyPath()][] = $error->getMessage();
             }
 
@@ -81,8 +84,11 @@ class PowerController extends AbstractController
     /**
      * @Route("/{id}", name="app_powers_update", methods={"PUT"})
      */
-    public function update(Request $request, PowerRepository $powerRepository, ValidatorInterface $validator): JsonResponse
-    {
+    public function update(
+        Request $request,
+        PowerRepository $powerRepository,
+        ValidatorInterface $validator
+    ): JsonResponse {
         $power = $powerRepository->find($request->get('id'));
         if (!$power) {
             return $this->json(
@@ -102,7 +108,7 @@ class PowerController extends AbstractController
         $errors = $validator->validate($power);
         if (count($errors) > 0) {
             $errorsArray = [];
-            foreach($errors as $error) {
+            foreach ($errors as $error) {
                 $errorsArray[$error->getPropertyPath()][] = $error->getMessage();
             }
 
