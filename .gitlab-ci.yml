@@ -10,6 +10,7 @@ cache:
 stages:
     - security-checker
     - coding-standards
+    - unit-tests
 
 security-checker:
     stage: security-checker
@@ -35,3 +36,8 @@ phpstan:
         - phpstan analyse ./src
     allow_failure: false
 
+phpunit:
+    stage: unit-tests
+    script:
+        - php bin/phpunit
+    allow_failure: false
