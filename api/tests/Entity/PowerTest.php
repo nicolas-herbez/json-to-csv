@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class PowerTest extends TestCase
 {
     private Power $power;
-    
+
     protected function setUp(): void
     {
         parent::setUp();
