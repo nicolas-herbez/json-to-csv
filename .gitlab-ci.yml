@@ -42,19 +42,20 @@ phpunit:
           alias: mysql
     variables:
         MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: json_to_csv_test
-        MYSQL_USER: user
-        MYSQL_PASSWORD: password
-        DATABASE_URL: 'mysql://user:password@mysql:3306/json_to_csv_test'
+        MYSQL_DATABASE: json_to_csv
+        DATABASE_URL: 'mysql://root:root@mysql:3306/json_to_csv'
     before_script:
         - apt-get update && apt-get install -y git libzip-dev
         - curl -sSk https://getcomposer.org/installer | php -- --disable-tls && mv composer.phar /usr/local/bin/composer
         - docker-php-ext-install mysqli pdo pdo_mysql zip
         - cd api && composer install --no-interaction
-        - php bin/console doctrine:database:drop --force --env=test
+        - php bin/console doctrine:database:drop --env=test --if-exists --force
         - php bin/console doctrine:database:create --env=test
         - php bin/console doctrine:migration:migrate --env=test --no-interaction
         - php bin/console doctrine:fixtures:load --env=test --no-interaction
+    cache:
+        paths:
+            - api/vendor/
     script:
         - php bin/phpunit
     allow_failure: false
