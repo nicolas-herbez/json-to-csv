@@ -41,14 +41,14 @@ while :; do
         echo "==>$color Run tests$nc\n"
         installTestDb
         echo "\n"
-        APP_ENV=test php bin/phpunit --testdox
+        php bin/phpunit --testsuite ordered --testdox
 
     elif [ -n $0 ] && [ "$response" = 4 ]; then
         clear
         echo "==>$color Run coverage test$nc\n"
         installTestDb
         echo "\n"
-        php bin/phpunit --coverage-html var/log/test/test-coverage
+        php bin/phpunit --testsuite ordered --coverage-html var/log/test/test-coverage
         echo "\n==> You can see the result with$color /api/var/log/test/test-coverage/index.html$nc"
 
     else

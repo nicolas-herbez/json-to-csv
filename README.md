@@ -1,4 +1,8 @@
 <p align="center">
+    <img src="https://img.shields.io/badge/pipeline-passed-green" />
+    <img src="https://img.shields.io/badge/coverage-88.89%25-green" />
+</p>
+<p align="center">
     <img src="https://img.shields.io/badge/PHP-7.4-blue" />
     <img src="https://img.shields.io/badge/Symfony-5.4-blue" />
     <img src="https://img.shields.io/badge/MySQL-8-blue" />
@@ -6,9 +10,14 @@
 </p>
 
 # JSON to CSV
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
+![Symfony](https://img.shields.io/badge/symfony-%23000000.svg?style=for-the-badge&logo=symfony&logoColor=white)
+![GitLab CI](https://img.shields.io/badge/gitlab%20ci-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)
+<!-- https://github.com/Ileriayo/markdown-badges -->
 
 The goal is to form csv files from a json file using Postman.
 ![json-to-csv.png](https://github.com/nicolas-herbez/json-to-csv/blob/main/json-to-csv.png?raw=true)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 ## Thanks
 

@@ -18,8 +18,14 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
+        <!-- <testsuite name="Project Test Suite">
             <directory>tests</directory>
+        </testsuite> -->
+        <testsuite name="ordered">
+            <directory>tests/Entity</directory>
+            <file>tests/Controller/PowerTest.php</file>
+            <file>tests/Controller/TeamsTest.php</file>
+            <file>tests/Controller/TeamMembersTest.php</file>
         </testsuite>
     </testsuites>
 
