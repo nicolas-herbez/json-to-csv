@@ -7,7 +7,7 @@ installTestDb() {
     APP_ENV=test symfony console doctrine:database:drop --if-exists --force --no-interaction
     APP_ENV=test symfony console doctrine:database:create --no-interaction
     APP_ENV=test symfony console doctrine:migrations:migrate --no-interaction
-    APP_ENV=test symfony console doctrine:fixtures:load --no-interaction
+    # APP_ENV=test symfony console doctrine:fixtures:load --no-interaction
 }
 
 clear
@@ -41,7 +41,7 @@ while :; do
         echo "==>$color Run tests$nc\n"
         installTestDb
         echo "\n"
-        php bin/phpunit --testsuite ordered --testdox
+        php bin/phpunit --testsuite ordered --testdox --verbose
 
     elif [ -n $0 ] && [ "$response" = 4 ]; then
         clear
