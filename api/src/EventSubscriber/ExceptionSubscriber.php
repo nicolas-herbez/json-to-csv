@@ -2,13 +2,14 @@
 
 namespace App\EventSubscriber;
 
+use Exception;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ExceptionSubscriber implements EventSubscriberInterface
 {
-    public function onKernelException(ExceptionEvent $event): void
+    public function onException(ExceptionEvent $event): void
     {
         // $event->getRequest()->setRequestFormat('json');
         // dd($event->getRequest()->getPathInfo());
@@ -34,8 +35,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            'kernel.exception' => 'onKernelException',
-            'format' => 'json'
+            ExceptionEvent::class => 'onException'
         ];
     }
 }
