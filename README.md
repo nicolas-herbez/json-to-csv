@@ -1,6 +1,6 @@
 <p align="center">
     <img src="https://img.shields.io/badge/pipeline-passed-green" />
-    <img src="https://img.shields.io/badge/coverage-94.81%25-green" />
+    <img src="https://img.shields.io/badge/coverage-100%25-green" />
 </p>
 <p align="center">
     <img src="https://img.shields.io/badge/PHP-7.4-blue" />
