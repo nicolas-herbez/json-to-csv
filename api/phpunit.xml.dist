@@ -22,6 +22,7 @@
             <directory>tests</directory>
         </testsuite> -->
         <testsuite name="ordered">
+            <directory>tests/DataFixtures</directory>
             <directory>tests/Entity</directory>
             <file>tests/Controller/PowerTest.php</file>
             <file>tests/Controller/TeamsTest.php</file>
