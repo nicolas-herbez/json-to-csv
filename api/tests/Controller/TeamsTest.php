@@ -76,4 +76,27 @@ class TeamsTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertResponseHeaderSame('content-type', 'application/vnd.ms-excel');
     }
+
+    public function testCreateCsvWithBadJsonMustBeInterceptedByExceptionSubscriber(): void
+    {
+        $newTeam = '
+            {
+                "bad json"
+            }
+        ';
+
+        $client = static::createClient();
+        $crawler = $client->request(
+            'POST',
+            '/api/teams',
+            [],
+            [],
+            ['CONTENT_TYPE' => 'application/json'],
+            $newTeam
+        );
+        $responseStatusCode = $client->getResponse()->getStatusCode();
+
+        $this->assertEquals($responseStatusCode, 400);
+        $this->assertResponseHeaderSame('content-type', 'application/json');
+    }
 }
